@@ -19,11 +19,11 @@ namespace PrjModule12
             slf.PrintStrings();
 
             var dict = new Dictionary<int, string> {{0, str1}, {1, str2}, {2, str3}, {3, str4}};
-            var stringUtils = new AdvancedStringUtils();
+            var stringUtils = new AdvancedStringUtils<int>();
 
 
-            var entries = SimpleStringUtils.MultipleQuickSearch(str3, "hi");
-            var entries2= SimpleStringUtils.MultipleListQuickSearch(new List<string>(){ str1 ,str2,str3,str4}, "hi");
+            var entries = SimpleStringUtils<string>.MultipleQuickSearch(str3, "hi");
+            var entries2= SimpleStringUtils<string>.MultipleListQuickSearch(new List<string>(){ str1 ,str2,str3,str4}, "hi");
             var dictResult = stringUtils.MultipleDictionaryStringSearchResults(dict, "hi");
             
             stringUtils.PrintToScreen();

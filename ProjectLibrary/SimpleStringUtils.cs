@@ -6,9 +6,9 @@ using ProjectLibrary.Miscellaneous;
 
 namespace ProjectLibrary
 {
-    public class SimpleStringUtils
+    public class SimpleStringUtils<TKey>
     {
-        protected int[][] LastSearchIntArray;
+        protected DictionarySearchResults<TKey> LastSearch;
 
         /// <summary>
         ///     Search all entry substring in IDictionary
@@ -16,7 +16,7 @@ namespace ProjectLibrary
         /// <typeparam name="TKey">Key of your dictionary</typeparam>
         /// <param name="dictionary">Dictionary where we'll search</param>
         /// <param name="substring">Substring</param>
-        public DictionarySearchResults<TKey> MultipleDictionaryStringSearchResults<TKey>(
+        public DictionarySearchResults<TKey> MultipleDictionaryStringSearchResults(
             IDictionary<TKey, string> dictionary,
             string substring)
         {
@@ -36,12 +36,14 @@ namespace ProjectLibrary
                     keysList.Add(key);
             }
 
-            LastSearchIntArray = entriesList.ToArray();
-            return new DictionarySearchResults<TKey>
+            LastSearch = new DictionarySearchResults<TKey>
             {
-                IndexesOfElements = entriesList.ToArray(), KeysOfElements = keysList.ToArray(),
-                SearchTime = timeWatch.ElapsedMilliseconds, TimeOfSearchStart = dateNow
+                IndexesOfElements = entriesList.ToArray(),
+                KeysOfElements = keysList.ToArray(),
+                SearchTime = timeWatch.ElapsedMilliseconds,
+                TimeOfSearchStart = dateNow
             };
+            return LastSearch;
         }
 
         /// <summary>

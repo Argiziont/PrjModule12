@@ -4,18 +4,20 @@ using ProjectLibrary.Interfaces;
 
 namespace ProjectLibrary
 {
-    public class AdvancedStringUtils : SimpleStringUtils, IPrintable
+    public class AdvancedStringUtils<TKey> : SimpleStringUtils<TKey>, IPrintable
     {
         /// <summary>
         ///     Prints last search entries to screen
         /// </summary>
         public void PrintToScreen()
         {
-            Debug.Assert(LastSearchIntArray != null, nameof(LastSearchIntArray) + " != null");
+            Debug.Assert(LastSearch != null, nameof(LastSearch) + " != null");
 
-            for (var i = 0; i < LastSearchIntArray.Length; i++)
+            for (var i = 0; i < LastSearch.IndexesOfElements.Length; i++)
                 Console.WriteLine(
-                    $"Entries of substring was found {LastSearchIntArray[i].Length} entries in {i} element");
+                    $"Entries of substring was found {LastSearch.IndexesOfElements[i].Length} entries in {i} element");
+            Console.WriteLine($"Time of search start {LastSearch.TimeOfSearchStart}");
+            Console.WriteLine($"Search time {LastSearch.SearchTime}");
         }
     }
 }
